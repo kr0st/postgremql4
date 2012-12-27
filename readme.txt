@@ -65,6 +65,7 @@ so you could benefit from looking at libpqxx API here:
 http://pqxx.org/devprojects/libpqxx/doc/4.0/html/Reference/
 
 Function return types and error handling.
+
 Only strings and integers could be returned by this library. This is the limitation of
 MQL4 that cannot operate any data structures that are more complex than a number,
 a string or an array.
