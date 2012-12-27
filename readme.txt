@@ -38,6 +38,8 @@ MS Visual Studio 2010 (Express edition will do) and build the solution.
 
 Install
 
+Please install Microsoft Visual C++ 2010 Redistributable Package (x86) from here:
+http://www.microsoft.com/en-us/download/details.aspx?id=5555
 Scroll down to Version History and download the latest binary release using the link
 provided there.
 Extract release archive directly into MT4 client directory, you will need administrator
@@ -156,7 +158,7 @@ pmql_delimiters(int val_delim, int col_delim, int row_delim);
         col_delim - character that separates one colname=value pair from another
                     colname=value pair, in other words it tells where value of one column
                     ends and a name of another column begins (default ‘|’)
-        row delim - character that separates list of colname=value pairs from another
+        row_delim - character that separates list of colname=value pairs from another
                     list of colname=value pairs, in other words it divides lists of
                     columns with values into rows (default ‘*’)
 
