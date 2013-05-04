@@ -24,6 +24,23 @@ License
 BSD 2-Clause (http://opensource.org/licenses/BSD-2-Clause).
 
 
+Known issues
+
+Currently only 1 DB connection per MT4 terminal is supported, meaning all EAs running in
+a single terminal instance will share this connection. This might produce unexpected side-effects:
+imagine EA#1 connects to DB “foo” and EA#2 connects to DB “bar”, EA#1 was quicker
+so the connection happens with DB “foo” and EA#2 just gets response “already connected”.
+
+However in case of EA#2 “already connected” does not mean that connection really happened
+with DB “bar”, it just means that something already made a DB connection.
+Also if EA#1 and EA#2 used different credentials, in our example connection was established
+using credentials of EA#1 only, so EA#2 has the same access level to DB as EA#1.
+
+Finally if both “foo” and “bar” DBs have table named “foobar” then both EAs will be writing to
+“foo.foobar” table and of course that is unexpected because the expectation was that EA#1
+writes to “foo.foobar” and EA#2 writes to “bar.foobar”.
+
+
 Compile
 
 After you downloaded sources search for archive third_party.7z and extract its content at
