@@ -1,5 +1,5 @@
 /* Distributed under the BSD license (http://opensource.org/licenses/BSD-2-Clause) *
- * Copyright (c) 2012, Rostislav Kuratch                                           *
+ * Copyright (c) 2012-2014, Rostislav Kuratch                                      *
  * All rights reserved.                                                            */
 
 #include "stdafx.h"
@@ -30,7 +30,7 @@ const char* String_Manager::managed_str(const std::string& str)
     }
 
     strings_.push_back(str);
-    current_mem_usage_ += (str.length() + 1);
+    current_mem_usage_ += (str.length() * sizeof(char) + 1);
 
     return strings_.back().c_str();
 }
