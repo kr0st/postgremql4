@@ -5,6 +5,7 @@
 #pragma once
 
 #include "Mutex.h"
+#include "String_Manager.h"
 
 
 class DB_Wrapper_Interface
@@ -24,7 +25,7 @@ class DB_Wrapper_Interface
         virtual std::string exec(const std::string& query) = 0;
         virtual std::string disconnect() = 0;
         
-        void set_delims(const char val_delim, const char col_delim, const char row_delim)
+        void set_delims(const wchar_t val_delim, const wchar_t col_delim, const wchar_t row_delim)
         {
             Mutex::Scoped_Lock lock(mutex_);
             val_delim_ = val_delim; col_delim_ = col_delim; row_delim_= row_delim;
@@ -33,8 +34,9 @@ class DB_Wrapper_Interface
 
     protected:
 
-        char val_delim_, col_delim_, row_delim_;
+        wchar_t val_delim_, col_delim_, row_delim_;
         Mutex mutex_;
 
+        std::string make_err_str(const wchar_t* error_desc) { std::string delim(" "); delim[0] = row_delim_; return "error" + delim + String_Manager::to_ascii(error_desc); }
         std::string make_err_str(const char* error_desc) { std::string delim(" "); delim[0] = row_delim_; return "error" + delim + error_desc; }
 };

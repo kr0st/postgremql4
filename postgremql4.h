@@ -8,18 +8,17 @@
 #define POSTGREMQL4_API extern "C" __declspec(dllexport)
 #else
 #define POSTGREMQL4_API extern "C" __declspec(dllimport)
-//#define POSTGREMQL4_API
 #endif
 
-POSTGREMQL4_API const char* pmql_connect(const char* host, const char* port, const char* user, const char* pass, const char* db);
-POSTGREMQL4_API const char* pmql_disconnect();
+POSTGREMQL4_API const wchar_t* pmql_connect(const wchar_t* host, const wchar_t* port, const wchar_t* user, const wchar_t* pass, const wchar_t* db);
+POSTGREMQL4_API const wchar_t* pmql_disconnect();
 
 POSTGREMQL4_API int pmql_begin_transaction();
-POSTGREMQL4_API const char* pmql_commit(int trans_ptr);
-POSTGREMQL4_API const char* pmql_rollback(int trans_ptr);
+POSTGREMQL4_API const wchar_t* pmql_commit(int trans_ptr);
+POSTGREMQL4_API const wchar_t* pmql_rollback(int trans_ptr);
 
-POSTGREMQL4_API const char* pmql_exec_in_transaction(int trans_ptr, const char* query);
-POSTGREMQL4_API const char* pmql_exec(const char* query);
+POSTGREMQL4_API const wchar_t* pmql_exec_in_transaction(int trans_ptr, const wchar_t* query);
+POSTGREMQL4_API const wchar_t* pmql_exec(const wchar_t* query);
 
 POSTGREMQL4_API void pmql_delimiters(int val_delim, int col_delim, int row_delim);
 POSTGREMQL4_API void pmql_set_cache_size(int max_cache_size);

@@ -60,10 +60,28 @@ Please install Microsoft Visual C++ 2010 Redistributable Package (x86) from here
 http://www.microsoft.com/en-us/download/details.aspx?id=5555
 Scroll down to Version History and download the latest binary release using the link
 provided there.
+
+For v1.0.0.1:
+
 Extract release archive directly into MT4 client directory, you will need administrator
 permissions and you will be asked if you would like to merge folders,
 answer “yes”.
 
+For v1.1.0.0:
+
+Folder structure has changed significantly with build 600 and now the archive
+contains 2 folders, each should be copied on top of the existing folder.
+
+Content of the folder called "to mt4 install folder" should be copied directly into
+MT4 install dir.
+
+Content of "to appdata roaming" should be copied to a special temp folder deep inside
+the Windows user home directory. This is the directory MT4 now uses for storing all
+user files including EAs. Here is example of the location of this folder on my PC:
+"C:\Users\kr0st\AppData\Roaming\MetaQuotes\Terminal\172BCC25D314F0E906794B8ECF7BFC66".
+
+As with the previous version just overwrite the existing folder with the one from the
+archive, this way you will merge old content of your MQL4 folder with postgremql4 library.
 
 Example Expert Advisor
 
@@ -109,8 +127,8 @@ and the second row contains human-readable exception description like
 
 Below is the list of functions exported from PostgreMQL4 DLL with descriptions.
 
-const char* pmql_connect(const char* host, const char* port,
-                         const char* user, const char* pass, const char* db)
+const char* pmql_connect(const wchar_t* host, const wchar_t* port,
+                         const wchar_t* user, const wchar_t* pass, const wchar_t* db)
     
     Connects to the database.
     Arguments:
@@ -151,7 +169,7 @@ const char* pmql_rollback(int trans_ptr)
     acquired from pmql_begin_transaction().
     Returns: “ok” on success, anything else means error.
 
-const char* pmql_exec_in_transaction(int trans_ptr, const char* query)
+const char* pmql_exec_in_transaction(int trans_ptr, const wchar_t* query)
 
     Executes query inside the transaction identified by trans_ptr, which is a
     transaction token acquired from pmql_begin_transaction(). 
@@ -160,7 +178,7 @@ const char* pmql_exec_in_transaction(int trans_ptr, const char* query)
              Empty string is also considered a success meaning that query did not
              return anything.
 
-const char* pmql_exec(const char* query)
+const char* pmql_exec(const wchar_t* query)
 
     Executes query in auto-commit mode.
     Returns: delimitered query result containing 0 or more rows on success or
@@ -205,6 +223,14 @@ void pmql_set_cache_size(int max_cache_size)
 
 
 Version History
+
+v1.1.0.0 (http://kr0st.users.sourceforge.net/files/v1.1.0.0-postgremql4.7z)
+Compatibility with MT4 Build 600+ added.
+
+Strings are in "Unicode" now, however this is just a compatibility fix
+meaning no new features were added. Therefore the library still supports only ASCII
+but strings are passed between MT4 and library in 2 bytes per character format
+in order to prevent crashes related to memory issues.
 
 v1.0.0.1 (http://kr0st.users.sourceforge.net/files/v1.0.0.1-postgremql4.7z)
 Initial release.
