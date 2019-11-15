@@ -1,7 +1,7 @@
 //+------------------------------------------------------------------+
-//|                                                                  Ticks Collector.mq4 |
-//|                                                                     Rostislav Kuratch |
-//|                                                      rostislav.kuratch@gmail.com |
+//|                                              Ticks Collector.mq4 |
+//|                                                Rostislav Kuratch |
+//|                                      rostislav.kuratch@gmail.com |
 //+------------------------------------------------------------------+
 #property copyright "Rostislav Kuratch"
 #property link "rostislav.kuratch@gmail.com"

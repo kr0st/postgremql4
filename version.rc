@@ -15,8 +15,8 @@
 //
 LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
 1 VERSIONINFO
-    FILEVERSION     1,1,0,0
-    PRODUCTVERSION  1,1,0,0
+    FILEVERSION     1,1,1,0
+    PRODUCTVERSION  1,1,1,0
     FILEOS          VOS_NT_WINDOWS32
     FILETYPE        VFT_DLL
     FILESUBTYPE     VFT2_UNKNOWN
@@ -29,11 +29,11 @@ LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
         {
             VALUE "Comments", "Distributed under the BSD license."
             VALUE "FileDescription", "Communicate with PostgreSQL DB from MQL4 script running inside MetaTrader 4 trading terminal."
-            VALUE "FileVersion", "1.1.0.0"
-            VALUE "LegalCopyright", "Copyright (c) 2012-2014, Rostislav Kuratch"
+            VALUE "FileVersion", "1.1.1.0"
+            VALUE "LegalCopyright", "Copyright (c) 2012-2019, Rostislav Kuratch"
             VALUE "OriginalFilename", "postgremql4.dll"
             VALUE "ProductName", "PostgreMQL4"
-            VALUE "ProductVersion", "1.1.0.0"
+            VALUE "ProductVersion", "1.1.1.0"
         }
     }
     BLOCK "VarFileInfo"

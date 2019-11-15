@@ -1,5 +1,5 @@
 /* Distributed under the BSD license (http://opensource.org/licenses/BSD-2-Clause) *
- * Copyright (c) 2012-2014, Rostislav Kuratch                                      *
+ * Copyright (c) 2012-2019, Rostislav Kuratch                                      *
  * All rights reserved.                                                            */
 
 #include "stdafx.h"
@@ -71,7 +71,7 @@ std::string Postgres_DB_Wrapper::commit(const int trans_ptr)
 
     try
     {
-        pqxx::work* trans = dynamic_cast <pqxx::work*> ((pqxx::basic_transaction*)trans_ptr);
+        pqxx::work* trans = dynamic_cast <pqxx::work*> ((pqxx::internal::basic_transaction*)trans_ptr);
         if (!trans)
             return make_err_str("Provided token was not a transaction.");
 
@@ -95,7 +95,7 @@ std::string Postgres_DB_Wrapper::rollback(const int trans_ptr)
 
     try
     {
-        pqxx::work* trans = dynamic_cast <pqxx::work*> ((pqxx::basic_transaction*)trans_ptr);
+        pqxx::work* trans = dynamic_cast <pqxx::work*> ((pqxx::internal::basic_transaction*)trans_ptr);
         if (!trans)
             return make_err_str("Provided token was not a transaction.");
         
@@ -122,7 +122,7 @@ std::string Postgres_DB_Wrapper::exec(const int trans_ptr, const std::string& qu
 
     try
     {
-        pqxx::work* trans = dynamic_cast <pqxx::work*> ((pqxx::basic_transaction*)trans_ptr);
+        pqxx::work* trans = dynamic_cast <pqxx::work*> ((pqxx::internal::basic_transaction*)trans_ptr);
         if (!trans)
             return make_err_str("Provided token was not a transaction.");
 
@@ -239,8 +239,8 @@ std::string Postgres_DB_Wrapper::exec(pqxx::work* trans, const std::string& quer
         int curr_row = 0;
         for (; rows_it != rows_end; ++rows_it)
         {
-            pqxx::tuple::const_iterator cols_it(rows_it->begin());
-            pqxx::tuple::const_iterator cols_end(rows_it->end());
+            pqxx::row::const_iterator cols_it(rows_it->begin());
+            pqxx::row::const_iterator cols_end(rows_it->end());
 
             int curr_col = 0;
             for (; cols_it != cols_end; ++cols_it)

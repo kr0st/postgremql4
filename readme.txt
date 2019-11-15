@@ -224,6 +224,10 @@ void pmql_set_cache_size(int max_cache_size)
 
 Version History
 
+v1.1.1.0 (http://kr0st.users.sourceforge.net/files/v1.1.1.0-postgremql4.7z)
+Switched to the latest stable libpqxx (6.4) and the latest possible 32bit client library of PostgreSQL (10.9).
+Code building switched to Visual Studio 2019.
+
 v1.1.0.0 (http://kr0st.users.sourceforge.net/files/v1.1.0.0-postgremql4.7z)
 Compatibility with MT4 Build 600+ added.
 
